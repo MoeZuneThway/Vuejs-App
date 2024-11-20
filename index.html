@@ -16,18 +16,7 @@
         <!-- Vue.js -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
        
-        <style>
-            .bannerlabel {
-                position: absolute;
-                top: 45%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                padding: 90px 200px;
-                text-align: center;
-                color: white;
-                font-size: 30px;
-            }
-        </style>
+   
     </head>
 
     <body>
@@ -81,8 +70,10 @@
                                 <form action="">
                                     <div class="col-lg-8 mx-auto">
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Name</label>
+                                            <!-- <label for="name" class="form-label">Name</label> -->
+                                             <span class="form-label">Name</span>
                                             <input
+                                            name="name"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder=""
@@ -90,8 +81,10 @@
                                             />
                                         </div>
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Phone Number</label>
+                                            <!-- <label for="phone" class="form-label">Phone Number</label> -->
+                                            <span class="form-label">Phone</span>
                                             <input
+                                            name="phone"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder=""
@@ -213,6 +206,28 @@
                     canCheckout() {
                         return this.cartItemCount > 0;
                     },
+                    // sortedActivities() {
+                    //     const sortKey = this.sortedcategory;
+                    //     const order = this.sortedorder;
+
+                    //     let filteredActivities = this.activities.filter(activity => {
+                    //         return activity.title.toLowerCase().includes(this.searchWord.toLowerCase()) || activity.location.toLowerCase().includes(this.searchWord.toLowerCase()) || activity.description.toLowerCase().includes(this.searchWord.toLowerCase()) ||activity.price.toString().includes(this.searchWord) ||activity.availableSpace.toString().includes(this.searchWord);
+                    //          });
+                    //     function compare(a, b) {
+                    //     let comparison = 0;
+                    //     if (sortKey === 'Price') {
+                    //         comparison = a.price - b.price;
+                    //     } else if (sortKey === 'Activity') {
+                    //         comparison = a.title.localeCompare(b.title);
+                    //     } else if (sortKey === 'Location') {
+                    //         comparison = a.location.localeCompare(b.location);
+                    //     } else if (sortKey === 'Availability') {
+                    //         comparison = a.availableSpace - b.availableSpace;
+                    //     }
+                    //         return order === 'ASC' ? comparison : -comparison;
+                    //     }
+                    //         return filteredActivities.sort(compare);
+                    // },
                     sortedActivities() {
                         const sortKey = this.sortedcategory;
                         const order = this.sortedorder;
