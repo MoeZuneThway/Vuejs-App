@@ -229,26 +229,23 @@
                     //         return filteredActivities.sort(compare);
                     // },
                     sortedActivities() {
-                        const sortKey = this.sortedcategory;
-                        const order = this.sortedorder;
+                        const params = {
+            q: this.searchWord,  // The search query
+            sortKey: this.sortedcategory,  // Sorting category
+            order: this.sortedorder,  // Sorting order (ASC or DESC)
+        };
+        
+        const query = new URLSearchParams(params).toString();
+        fetch(`http://localhost:3000/search?${query}`)
+            .then(response => response.json())
+            .then(data => {
+                this.activities = data; // Set fetched data
+                this.loading = false    ;
+            })
+            .catch(error => console.error("Error performing search:", error));
 
-                        let filteredActivities = this.activities.filter(activity => {
-                            return activity.title.toLowerCase().includes(this.searchWord.toLowerCase()) || activity.location.toLowerCase().includes(this.searchWord.toLowerCase()) || activity.description.toLowerCase().includes(this.searchWord.toLowerCase()) ||activity.price.toString().includes(this.searchWord) ||activity.availableSpace.toString().includes(this.searchWord);
-                             });
-                        function compare(a, b) {
-                        let comparison = 0;
-                        if (sortKey === 'Price') {
-                            comparison = a.price - b.price;
-                        } else if (sortKey === 'Activity') {
-                            comparison = a.title.localeCompare(b.title);
-                        } else if (sortKey === 'Location') {
-                            comparison = a.location.localeCompare(b.location);
-                        } else if (sortKey === 'Availability') {
-                            comparison = a.availableSpace - b.availableSpace;
-                        }
-                            return order === 'ASC' ? comparison : -comparison;
-                        }
-                            return filteredActivities.sort(compare);
+        // Return local activities (reactive)
+        return this.activities;
                     },
                     showCart() {
                         return this.cart.length > 0;
@@ -273,7 +270,7 @@
                     getImagePath(image) {
                         // const baseUrl = process.env.VUE_APP_BASE_URL || "http://localhost:3000";
                         const baseUrl =  "http://localhost:3000";
-                        console.log('getImagePath:', image);
+                        // console.log('getImagePath:', image);
                         return `${baseUrl}/${image}`;
                      },
                     removeFromCart(cartItem) {
