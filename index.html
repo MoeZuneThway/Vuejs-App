@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
         <!-- Vue.js -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script src="activities.js"></script>
+       
         <style>
             .bannerlabel {
                 position: absolute;
@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-lg-4 my-3" v-for="activity in cart" :key="activity.cartItemId">
                                     <div class="card rounded p-3">
-                                        <img :src="getImagePath(activity.image)" alt="" class="w-100 rounded" style="height: 255px;" @error="onImageError"> 
+                                        <img :src="getImagePath(activity.image)" alt="" class="w-100 rounded" style="height: 255px;" > 
                                         <h3 class="my-2">{{ activity.title }}</h3>
                                         <p class="my-2" style="height:70px;">{{ activity.description }}</p>
                                         <p class="my-2">Location: {{ activity.location }}</p>
