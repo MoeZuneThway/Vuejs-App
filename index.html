@@ -236,7 +236,7 @@
         };
         
         const query = new URLSearchParams(params).toString();
-        fetch(`http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/search?${query}`)
+        fetch(`https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/search?${query}`)
             .then(response => response.json())
             .then(data => {
                 this.activities = data; // Set fetched data
@@ -257,7 +257,7 @@
                     },
                 },
                 created: function() {
-    fetch("http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities")
+    fetch("https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities")
         .then(response => response.json())
         .then(json => {
             console.log(json); // Check the data in the console
@@ -268,8 +268,8 @@
 ,
                 methods: {
                     getImagePath(image) {
-                        // const baseUrl = process.env.VUE_APP_BASE_URL || "http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
-                        const baseUrl =  "http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
+                        // const baseUrl = process.env.VUE_APP_BASE_URL || "https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
+                        const baseUrl =  "https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
                         // console.log('getImagePath:', image);
                         return `${baseUrl}/${image}`;
                      },
@@ -308,7 +308,7 @@
                         this.showCheckout = false;
                     },
                     updateAvailableSpaces(lessonID, newSpaces) {
-    fetch(`http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities/${lessonID}`, {
+    fetch(`https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities/${lessonID}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -327,7 +327,7 @@
             console.log(`Successfully updated spaces for lesson ${lessonID}:`, data);
 
             // Fetch the updated data from the server
-            return fetch(`http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities/${lessonID}`);
+            return fetch(`https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities/${lessonID}`);
         })
         .then((response) => response.json())
         .then((updatedActivity) => {
@@ -354,7 +354,7 @@ checkOut() {
         numberOfSpaces: this.cart.map((item) => this.spaceLeft(item)),
     };
 
-    fetch("http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/orders", {
+    fetch("https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/orders", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -369,7 +369,7 @@ checkOut() {
                 });
 
                 // Refresh the activities data after checkout
-                return fetch("http://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities");
+                return fetch("https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities");
             } else {
                 throw new Error("Checkout failed. Please try again.");
             }
