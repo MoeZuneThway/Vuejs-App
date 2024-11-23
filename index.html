@@ -257,7 +257,7 @@
                     },
                 },
                 created: function() {
-    fetch("https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities")
+    fetch("https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com/collections/activities" || "http://localhost:3000")
         .then(response => response.json())
         .then(json => {
             console.log(json); // Check the data in the console
