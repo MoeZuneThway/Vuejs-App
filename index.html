@@ -268,8 +268,8 @@
 ,
                 methods: {
                     getImagePath(image) {
-                        // const baseUrl = process.env.VUE_APP_BASE_URL || "http://localhost:3000";
-                        const baseUrl =  "https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
+                        const baseUrl = "https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com" || "http://localhost:3000";
+                        // const baseUrl =  "https://eduxplore-env.eba-6ypfuvfv.eu-west-2.elasticbeanstalk.com";
                         // console.log('getImagePath:', image);
                         return `${baseUrl}/${image}`;
                      },
