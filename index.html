@@ -251,7 +251,7 @@
                         return this.cart.length > 0;
                     },
                     validated(){
-                        const validateName = /^[a-zA-Z]+$/;
+                        const validateName = /^[a-zA-Z ]+$/;
                         const validatePhone = /^\d+$/;
                         return validateName.test(this.cusName) && validatePhone.test(this.cusPhone.toString());
                     },
